@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location and Access Check</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        #map {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Location and Access Check</h1>
+        <button class="button" onclick="checkAccess()">Check Access</button>
+        <iframe id="map" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <script>
+        function checkAccess() {
+            const location = prompt("Please enter your location:").trim().toUpperCase();
+            const validLocations = ['PUNJAB', 'HARYANA', 'CHANDIGARH'];
+            const validUsername = 'admin';
+            const validPassword = 'password123';
+
+            if (validLocations.includes(location)) {
+                const username = prompt("Please enter your username:");
+                const password = prompt("Please enter your password:");
+
+                if (username === validUsername && password === validPassword) {
+                    alert('Access granted');
+
+                    const mapUrl = `https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${center}&zoom=${zoom}`;
+                    document.getElementById('map').src = mapUrl;
+                    document.getElementById('map').style.display = 'block';
+                } else {
+                    alert('Wrong credentials');
+                }
+            } else {
+                alert('Access denied');
+            }
+        }
+    </script>
+</body>
+</html>
